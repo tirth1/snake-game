@@ -20,8 +20,8 @@ class Snake(Turtle):
         for position in self.start_positions:
             new_segment = Turtle("square")
             new_segment.penup()
-            new_segment.color("white")
             new_segment.goto(position)
+            new_segment.color("white")
             self.segments.append(new_segment)
 
     def move(self):
@@ -32,19 +32,19 @@ class Snake(Turtle):
 
         self.segments[0].fd(self.move_distance)
 
-    def up(self):
+    def move_up(self):
         if self.head.heading() != self.DOWN:
             self.head.setheading(self.UP)
 
-    def down(self):
+    def move_down(self):
         if self.head.heading() != self.UP:
             self.head.setheading(self.DOWN)
 
-    def right(self):
+    def move_right(self):
         if self.head.heading() != self.LEFT:
             self.head.setheading(self.RIGHT)
 
-    def left(self):
+    def move_left(self):
         if self.head.heading() != self.RIGHT:
             self.head.setheading(self.LEFT)
 
@@ -52,10 +52,7 @@ class Snake(Turtle):
         new_segment = Turtle("square")
         new_segment.penup()
         new_segment.color("white")
-
         new_x = self.segments[len(self.segments) - 1].xcor()
         new_y = self.segments[len(self.segments) - 1].ycor()
-        new = (new_x, new_y)
-        self.start_positions.append(new)
         new_segment.goto(new_x, new_y)
         self.segments.append(new_segment)
