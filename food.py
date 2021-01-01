@@ -13,5 +13,5 @@ class Food(Turtle):
         self.generate_food()
 
     def generate_food(self):
-        self.goto(random.randint(-280, 280), random.randint(-280, 280))
+        self.goto(random.randint(-280, 280), random.randint(-280, 250))
 

@@ -15,16 +15,16 @@ food = Food()
 score_board = Scoreboard()
 
 screen.update()
-screen.title("Welcome to the turtle zoo!")
+screen.title("The Snake Game")
 screen.listen()
 screen.onkeypress(fun=snake.move_left, key="Left")
 screen.onkeypress(fun=snake.move_right, key="Right")
 screen.onkeypress(fun=snake.move_up, key="Up")
 screen.onkeypress(fun=snake.move_down, key="Down")
 
-
 game_on = True
 score_board.show_score()
+
 while game_on:
 
     screen.update()
@@ -39,7 +39,7 @@ while game_on:
         food.generate_food()
 
     # Detect collision with walls
-    if abs(snake.head.xcor()) >= 305 or abs(snake.head.ycor()) >= 305:
+    if abs(snake.head.xcor()) >= 300 or abs(snake.head.ycor()) >= 300:
         score_board.game_over()
         game_on = False
         break
