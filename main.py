@@ -1,6 +1,6 @@
 from turtle import Turtle, Screen
 import time
-import random
+from food import Food
 from snake import Snake
 screen = Screen()
 screen.title("The Snake Game")
@@ -9,6 +9,8 @@ screen.bgcolor("black")
 screen.tracer(0)
 
 snake = Snake()
+food = Food()
+
 screen.update()
 
 screen.listen()
@@ -17,20 +19,6 @@ screen.onkeypress(fun=snake.right, key="Right")
 screen.onkeypress(fun=snake.up, key="Up")
 screen.onkeypress(fun=snake.down, key="Down")
 
-food = Turtle("circle")
-food.penup()
-food.shapesize(0.5, 0.5)
-food.color("red")
-
-
-def generate_food():
-    while True:
-        food.goto(random.randrange(-280, 280), random.randrange(-280, 280))
-        if food not in snake.start_positions:
-            break
-
-
-generate_food()
 game_on = True
 while game_on:
     screen.update()
@@ -39,7 +27,7 @@ while game_on:
 
     if snake.head.distance(food) < 15:
         snake.add_segment()
-        generate_food()
+        food.generate_food()
 
     # Detect collision with walls
     if abs(snake.head.xcor()) >= 305 or abs(snake.head.ycor()) >= 305:
@@ -52,9 +40,11 @@ while game_on:
             continue
         game_on = False
         break
+
     # Detect collision with tail
-    if snake.head.position() in snake.start_positions:
-        print("tail")
-        break
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_on = False
+            break
 
 screen.exitonclick()
