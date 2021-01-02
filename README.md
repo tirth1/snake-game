@@ -50,4 +50,4 @@ $ python main.py
 ```
 
 ## Download
-You can [download](https://github.com/tirth1/hangman/releases/tag/1.0.1) the latest installable version of Hangman for Windows, Linux and macOS.
+You can [download](https://github.com/tirth1/snake-game/releases/tag/v1.0.1) the latest installable version of The Snake Game for Windows, Linux and macOS.
